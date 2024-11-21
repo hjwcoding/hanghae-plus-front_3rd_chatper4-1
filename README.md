@@ -16,7 +16,7 @@ GitHub Actions에 워크플로우를 작성해 다음과 같이 배포가 진행
 
 ## 주요 개념
 - GitHub Actions : GitHub Actions는 GitHub에서 제공하는 자동화 플랫폼으로, CI/CD 작업을 쉽게 설정할 수 있도록 도와줍니다.
-- CI/CD : CI/CD는 **Continuous Integration(지속적 통합)**과 **Continuous Delivery/Deployment(지속적 전달/배포)**의 약자입니다.
+- CI/CD : CI/CD는 **Continuous Integration(지속적 통합)** 과 **Continuous Delivery/Deployment(지속적 전달/배포)** 의 약자입니다.
     - Jenkins
     오픈소스 CI/CD 서버로 매우 유연한 설정 가능.
     수많은 플러그인 지원으로 확장 가능.
@@ -41,10 +41,10 @@ GitHub Actions에 워크플로우를 작성해 다음과 같이 배포가 진행
    - TeamCity
     JetBrains에서 제공하는 CI/CD 도구.
     코드 품질 관리 도구와 쉽게 통합 가능.
-- S3 : Amazon Simple Storage Service (S3)**는 오브젝트 스토리지 서비스입니다. AWS(Amazon Web Services)에서 제공하며, 인터넷을 통해 데이터를 안전하게 저장, 관리, 액세스할 수 있도록 설계되었습니다.
+- S3 : **Amazon Simple Storage Service (S3)** 는 오브젝트 스토리지 서비스입니다. AWS(Amazon Web Services)에서 제공하며, 인터넷을 통해 데이터를 안전하게 저장, 관리, 액세스할 수 있도록 설계되었습니다.
 - 스토리지: 스토리지는 데이터를 저장하는 기술이나 시스템을 의미합니다. 컴퓨터에서 파일, 데이터베이스, 미디어 등 모든 종류의 데이터를 저장하고 필요할 때 접근할 수 있도록 지원합니다.
-- CloudFront : Amazon CloudFront는 AWS에서 제공하는 **글로벌 콘텐츠 전송 서비스(CDN)**입니다. CloudFront는 사용자가 웹사이트, 애플리케이션, 스트리밍 비디오, 또는 API에 빠르게 접근할 수 있도록 콘텐츠를 캐싱하고, 보안을 강화하며, 네트워크 지연을 줄이는 데 도움을 줍니다.
-- CDN: CDN(Content Delivery Network)**는 전 세계적으로 분산된 서버 네트워크를 이용해 콘텐츠를 사용자에게 빠르고 효율적으로 제공하는 기술입니다. CDN은 웹 페이지, 이미지, 비디오, CSS, JavaScript 등 정적 및 동적 콘텐츠를 캐싱하여 사용자와 가까운 서버에서 제공함으로써 성능을 최적화합니다.
+- CloudFront : Amazon CloudFront는 AWS에서 제공하는 **글로벌 콘텐츠 전송 서비스(CDN)** 입니다. CloudFront는 사용자가 웹사이트, 애플리케이션, 스트리밍 비디오, 또는 API에 빠르게 접근할 수 있도록 콘텐츠를 캐싱하고, 보안을 강화하며, 네트워크 지연을 줄이는 데 도움을 줍니다.
+- CDN: **CDN(Content Delivery Network)** 는 전 세계적으로 분산된 서버 네트워크를 이용해 콘텐츠를 사용자에게 빠르고 효율적으로 제공하는 기술입니다. CDN은 웹 페이지, 이미지, 비디오, CSS, JavaScript 등 정적 및 동적 콘텐츠를 캐싱하여 사용자와 가까운 서버에서 제공함으로써 성능을 최적화합니다.
 ## BASIC
 ## 배포 파이프라인 다이어그램
 ![제목 없는 다이어그램](https://github.com/user-attachments/assets/ac8efcf9-be5d-4f99-8f81-27ba0ac2902d)
