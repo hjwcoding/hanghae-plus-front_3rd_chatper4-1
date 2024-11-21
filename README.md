@@ -46,27 +46,54 @@ GitHub Actions에 워크플로우를 작성해 다음과 같이 배포가 진행
 - CloudFront : Amazon CloudFront는 AWS에서 제공하는 **글로벌 콘텐츠 전송 서비스(CDN)**입니다. CloudFront는 사용자가 웹사이트, 애플리케이션, 스트리밍 비디오, 또는 API에 빠르게 접근할 수 있도록 콘텐츠를 캐싱하고, 보안을 강화하며, 네트워크 지연을 줄이는 데 도움을 줍니다.
 - CDN: CDN(Content Delivery Network)**는 전 세계적으로 분산된 서버 네트워크를 이용해 콘텐츠를 사용자에게 빠르고 효율적으로 제공하는 기술입니다. CDN은 웹 페이지, 이미지, 비디오, CSS, JavaScript 등 정적 및 동적 콘텐츠를 캐싱하여 사용자와 가까운 서버에서 제공함으로써 성능을 최적화합니다.
 ## BASIC
-## 배포 파이프라인을 설명하는 다이어그램과 설명
+## 배포 파이프라인 다이어그램
 ![제목 없는 다이어그램](https://github.com/user-attachments/assets/ac8efcf9-be5d-4f99-8f81-27ba0ac2902d)
 
-GitHub Actions에 워크플로우를 작성해 다음과 같이 배포가 진행되도록 합니다.
-1. 저장소를 체크아웃합니다.
-2. Node.js 18.x 버전을 설정합니다.
-3. 프로젝트 의존성을 설치합니다.
-4. Next.js 프로젝트를 빌드합니다.
-5. AWS 자격 증명을 구성합니다.
-6. 빌드된 파일을 S3 버킷에 동기화합니다.
-7. CloudFront 캐시를 무효화합니다.
 ## ADVANCED
 ## CDN 도입 전과 도입 후의 성능 개선 보고서 작성
-AS-IS : S3
-![성능 개선 전](https://github.com/user-attachments/assets/04408559-af19-4766-8a2a-d893e9846fc0)
-TO-BD : Cloudfront
-![성능개선 후](https://github.com/user-attachments/assets/917f471a-1dc4-4fe4-9a48-3427d8b03f0d)
+## 1. 패킷비교
+- AS-IS : S3
+<img src="https://github.com/user-attachments/assets/04408559-af19-4766-8a2a-d893e9846fc0" width="500" />
 
-|제목|내용|설명|
-|------|---|---|
-|테스트1|테스트2|테스트3|
-|테스트1|테스트2|테스트3|
-|테스트1|테스트2|테스트3|
+- TO-BE : Cloudfront
+<img src="https://github.com/user-attachments/assets/917f471a-1dc4-4fe4-9a48-3427d8b03f0d" width="500" />
 
+
+|지표|AS-IS (S3 버킷)|TO-BE (CloudFront)|개선사항
+|------|---|---|---|
+|Fully Loaded Time|약 11ms|약 314ms|약 300ms 감소|
+
+- 크기는 약 8kb 줄어들었고 300ms(0.3초) 감소하였다.
+## 2. 상세비교
+- AS-IS : S3
+<img src="https://github.com/user-attachments/assets/17324069-0b11-4e22-afc7-3d7faab4b04c" width="500" />
+
+- TO-BE : Cloudfront
+<img src="https://github.com/user-attachments/assets/9064e6e0-afa6-4fb9-938f-e780831a743f" width="500" />
+
+- ※ 위 표 참고
+
+## 최종비교
+
+
+- LCP(Largest Contentful Paint)**는 웹 페이지의 성능을 측정하는 중요한 지표 중 하나로, 페이지 로딩 성능을 평가하는 데 사용됩니다. LCP는 사용자가 페이지를 로딩하는 동안 가장 큰 콘텐츠 요소(이미지, 비디오, 텍스트 블록 등)가 화면에 표시되는 시간을 측정합니다.
+    - LCP의 의미와 중요성
+    목표: LCP는 사용자가 웹 페이지의 주요 콘텐츠가 로드되고, 페이지가 상호작용 가능해지는 시점을 측정하는 데 중요한 역할을 합니다.
+    사용자 경험: LCP가 빨리 완료되면, 사용자는 페이지가 빠르게 로드되고 상호작용할 수 있다고 느끼게 됩니다. 반면, LCP가 느리면 사용자 경험이 저하될 수 있습니다.
+
+- AS-IS : S3
+<img src="https://github.com/user-attachments/assets/0f88524c-608b-4edf-968b-ab07c0e5f776" width="500" />
+
+- TO-BE : Cloudfront
+<img src="https://github.com/user-attachments/assets/15102f52-56c6-4d6d-8768-1a381daef513" width="500" />
+
+|지표|AS-IS (S3 버킷)|TO-BE (CloudFront)|개선사항
+|------|---|---|---|
+|Fully Loaded Time|약 0.73초|약 0.18초|약 0.5초 감소|
+
+## 결론
+- S3 와 비교했을 때 CDN의 장점 
+1. 빠른 응답 속도
+2. 안정적인 서비스 구축
+3. 서비스를 운영하는 리소스 절약
+4. 사용자 편의 증가
